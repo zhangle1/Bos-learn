@@ -52,7 +52,25 @@
 
 
 
-        <div title="面板二">2222</div>
+        <div title="面板二">
+            <ul id="ztree1" class="ztree"></ul>
+            <script type="text/javascript">
+                $(function () {
+                    var setting={
+                    };
+                    //构造节点数据
+                    var zNodes=[
+                        {"name":"节点1"},
+                        {"name":"节点2"},
+                        {"name":"节点3"}
+                        ];
+
+                })
+                
+                
+            </script>
+
+        </div>
         <div title="面板三">3333</div>
     </div>
 </div>
