@@ -10,6 +10,11 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/js/easyui/themes/icon.css">
     <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.8.3.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/js/easyui/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/js/ztree/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="${pageContext.request.contextPath }/js/ztree/jquery.ztree.all-3.5.js"></script>
+
+
+
 
 </head>
 <body class="easyui-layout">
@@ -60,18 +65,76 @@
                     };
                     //构造节点数据
                     var zNodes=[
-                        {"name":"节点1"},
+                        {"name":"节点1","children":[{"name":"节点一"},{"name":"节点二"}]},
                         {"name":"节点2"},
                         {"name":"节点3"}
                         ];
-
-                })
+                    $.fn.zTree.init($("#ztree1"),setting,zNodes);
+                });
                 
                 
             </script>
 
         </div>
-        <div title="面板三">3333</div>
+        <div title="面板三">
+            <ul id="ztree2" class="ztree"></ul>
+            <script type="text/javascript">
+                $(function () {
+                    var setting2={
+                        data:{
+                            simpleData:{
+                                enable:true
+                            }
+                        }
+
+                    };
+                    //构造节点数据
+                    var zNodes2=[
+                        {"id":"1","pId":"0","name":"节点1"},
+                        {"id":"2","pId":"1","name":"节点2"},
+                        {"id":"3","pId":"2","name":"节点3"}
+                    ];
+                    $.fn.zTree.init($("#ztree2"),setting2,zNodes2);
+                });
+
+
+            </script>
+
+
+        </div>
+
+        <div title="面板四">
+
+            <ul id="ztree3" class="ztree"></ul>
+            <script type="text/javascript">
+                $(function () {
+                    var setting3={
+                        data:{
+                            simpleData:{
+                                enable:true
+                            }
+                        }
+
+                    };
+                    //构造节点数据
+
+                    var url="${pageContext.request.contextPath}/json/menu.json";
+                    $.post(url,{},function (data) {
+                        $.fn.zTree.init($("#ztree3"),setting3,data);
+                    },'json');
+
+
+                });
+
+
+            </script>
+
+
+
+
+        </div>
+
+
     </div>
 </div>
 <div data-options="region:'center'">
